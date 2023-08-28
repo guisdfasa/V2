@@ -1,11 +1,9 @@
 -----------------Pedroxz Menu V2--------------
-if game.PlaceId == 8369525282 then --id do game
-
     --Loader
     local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
     
     --Config Geral
-    local Window = OrionLib:MakeWindow({Name = "😈 Pedroxz Menu V2 😈", HidePremium = false, SaveConfig = true, ConfigFolder = "PedroxzMenu"})
+    local Window = OrionLib:MakeWindow({Name = "😈 Pedroxz Menu V2 😈", HidePremium = false, SaveConfig = true, IntroEnabled = false})
     local Window = OrionLib:MakeWindow({Name = "😈 Pedroxz Menu V2 😈", HidePremium = false, SaveConfig = true, IntroEnabled = false})
     local Player = game.Players.LocalPlayer
 
@@ -19,10 +17,10 @@ if game.PlaceId == 8369525282 then --id do game
     --Valor funcional
     _G.Aimbot = true
     _G.Loop = true
-    _G.Key = "PHXtroll63"
+    _G.Key = "PHXTROLL"
     _G.KeyInput = "string"
 
-    --Funcao do matar geral loop by pedroxz
+    --Funcao do Serial Killer loop by pedroxz
     function Loop()
         while _G.Loop == true do
             local DR = game:GetService("ReplicatedStorage")["ACS_Engine"].Eventos.Damage
@@ -99,7 +97,12 @@ if game.PlaceId == 8369525282 then --id do game
     local PlayersTab = Window:MakeTab({
         Name = "Players",
         Icon = "rbxassetid://4483345998",
-        PremiumOnly = false      
+        PremiumOnly = false  
+    })
+    local ArmaTab = Window:MakeTab({
+        Name = "Weapon",
+        Icon = "rbxassetid://4483345998",
+        PremiumOnly = false     
     })
     local EspTab = Window:MakeTab({
         Name = "Visual",
@@ -107,7 +110,7 @@ if game.PlaceId == 8369525282 then --id do game
         PremiumOnly = false              
     })    
     local TrollTab = Window:MakeTab({
-        Name = "Troll",
+        Name = "Destruição",
         Icon = "rbxassetid://4483345998",
         PremiumOnly = false      
     })    
@@ -129,7 +132,12 @@ if game.PlaceId == 8369525282 then --id do game
     local RoleplayTab = Window:MakeTab({
         Name = "Roleplay",
         Icon = "rbxassetid://4483345998",
-        PremiumOnly = false                           
+        PremiumOnly = false      
+    })    
+    local CarroTab = Window:MakeTab({
+        Name = "Veiculos",
+        Icon = "rbxassetid://4483345998",
+        PremiumOnly = false                        
     })    
     local AdmTab = Window:MakeTab({
         Name = "Adm",
@@ -143,7 +151,7 @@ local char = plr.Character
 
 
 
---Funcao
+--Funcao farm teleporte favela do batata
 
 
 function TeleportBaseTR1()
@@ -230,10 +238,18 @@ ConfigTab:AddColorpicker({
 		print(Value)
 	end	  
 })
-local Section = PlayersTab:AddSection({
-	Name = "Arma"
+ConfigTab:AddButton({
+	Name = "Alterar Cursor Anti Bug",
+	Callback = function()
+        local mouse = game.Players.LocalPlayer:GetMouse()
+ 
+        mouse.Icon = "rbxassetid://5992580992"
+  	end    
+})
+local Section = ArmaTab:AddSection({
+	Name = "Weapon Hacks"
     })
-    PlayersTab:AddButton({
+    ArmaTab:AddButton({
         Name = "Inf Ammo",
         Callback = function()
             _G.Damage = 1003 -- might not work
@@ -248,12 +264,452 @@ _G.Auto = true
 loadstring(game:HttpGet("https://raw.githubusercontent.com/RIPExploit/23452tr2t423t3t34tg34gg/master/ryewifwfripexloit.lua", true))()
         end    
 })
-PlayersTab:AddButton({
-    Name = "Puxar armas (Beta)",
+ArmaTab:AddButton({
+    Name = "Puxar armas",
     Callback = function()
-        loadstring(game:HttpGet('https://raw.githubusercontent.com/DebugCrazY/FMobfuscated/main/fm.lu'))()
+        for i, v in pairs(game:GetDescendants()) do
+            if v:IsA('Tool') then
+                v.Parent = game:GetService('Players').LocalPlayer.Backpack
+            end
+        end
+        
+        game:GetService('Players').LocalPlayer.Character.Humanoid.Died:Connect(function()
+            for i, v in pairs(game:GetService('Players').LocalPlayer.Backpack:GetDescendants()) do
+                if v:IsA('Tool') then
+                    v.Parent = game:GetService('Teams')
+                end
+            end
+            for i, v in pairs(game:GetService('Players').LocalPlayer.Character:GetDescendants()) do
+                if v:IsA('Tool') then
+                    v.Parent = game:GetService('Teams')
+                end
+            end
+        end)
       end    
+})
+ArmaTab:AddButton({
+    Name = "Puxar e clonar itens",
+    Callback = function()
+        local function ClonarTool(tool, player)
+            local backpack = player:WaitForChild("Backpack")
+            local clonedTool = tool:Clone()
+            clonedTool.Parent = backpack
+        end
+        
+        local function procurarTools()
+            local player = game.Players.LocalPlayer
+        
+            for _, tool in pairs(game:GetDescendants()) do
+                if tool:IsA("Tool") then
+                    ClonarTool(tool, player)
+                end
+            end
+        end
+        
+        procurarTools()
+      end    
+}) 
+ArmaTab:AddButton({
+	Name = "Kill All ACS - Weapon",
+	Callback = function()
+        game.StarterGui:SetCore("SendNotification", {
+            Title = "Kill all Hack"; 
+            Text = "By Pedroxz";
+            Icon = "rbxassetid://57254792"; 
+            
+            Duration = 5; 
+            })
+            --- script 
+            _G.Stop = false
+             
+            repeat game:GetService("RunService").RenderStepped:Wait()
+            for _,v in next, game:GetService("Players"):GetPlayers() do
+            if v ~= game:GetService("Players").LocalPlayer then
+            local char = v.Character or workspace:FindFirstChild(v.Name)
+            if char then
+            pcall(function()
+            char.Head.Anchored = true
+            char.Head.CFrame = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,2,-2.5)
+            end)
+            end
+            end
+            end
+            until _G.Stop
+  	end    
+})
+local Section = CarroTab:AddSection({
+	Name = "Veiculos"
+})
+CarroTab:AddButton({
+	Name = "Reparar Veiculo - Depende da ACS",
+	Callback = function()
+        wait(0.2)
+        game.StarterGui:SetCore("SendNotification", {
+        Title = "Veiculo Reperado!"; -- the title 
+        Text = "Reparado com sucesso!"; -- what the text says 
+        Duration = 5; -- how long the notification should in secounds
+        })
+  	end    
+})
+CarroTab:AddButton({
+	Name = "Puxar Fusca - Cidade Alta",
+	Callback = function()
+        local args = {
+            [1] = "spawner",
+            [2] = "Fusca",
+            [3] = workspace.EstacionamentoModel.Spawns
+        }
+        
+        game:GetService("ReplicatedStorage").ConcessionariaRS.Remotes.Check:InvokeServer(unpack(args))
+        wait(00000000.5)
+        
+  	end    
+})
+CarroTab:AddButton({
+	Name = "Puxar Carro - Eb do Tevez",
+	Callback = function()
+        for _, v: string in ipairs({'Tesla', 'Impala', 'Kombi'}) do
+            game.ReplicatedStorage:WaitForChild("Remotes").Garagem:FireServer(v, "CV")
+        end
+  	end    
+})
+CarroTab:AddButton({
+	Name = "Selection Carro - Eb Do Tevez",
+	Callback = function()
+        local Plr = game.Players.LocalPlayer
+        type ret = ModuleScript
+        local function GetIconModule():ret
+            for _, instance in game.ReplicatedStorage:GetDescendants() do
+                if instance:IsA("ModuleScript") and instance.Name == "Icon" then
+                    return instance, true
+                end
+            end
+            return "Icone não achado.", false
+        end
+        
+        local Icon, Sucess = GetIconModule()
+        
+        
+        if not Sucess then return end
+        
+        local Module = require(Icon)
+        
+        local NewIcon = Module.new()
+            :setLabel("Spawnar carro")
+            :setImage(14268537581)
+            :notify()
+            :setTip("Abrir menu de spawnar carro")
+            :setDropdown({
+                
+                Module.new()
+                :setLabel("Spawnar Kombi")
+                :setProperty("deselectWhenOtherIconSelected", true)
+                :bindEvent("selected",function()
+                game:GetService("StarterGui"):SetCore("SendNotification", {
+                    Title = "Sistema";
+                    Text = "Sua kombi foi spawnada na garagem."
+                })
+                game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Garagem"):FireServer("Kombi", "CV")
+                end);
+        
+                Module.new()
+                :setLabel("Spawnar Impala")
+                :setProperty("deselectWhenOtherIconSelected", true)
+                :bindEvent("selected",function()
+                    game:GetService("StarterGui"):SetCore("SendNotification", {
+                        Title = "Sistema";
+                        Text = "Sua Impala foi spawnada na garagem."
+                    })
+                    game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Garagem"):FireServer("Impala", "CV")
+                end);
+        
+                Module.new()
+                :setLabel("Spawnar Tesla")
+                :setProperty("deselectWhenOtherIconSelected", true)
+                :bindEvent("selected",function()
+                    game:GetService("StarterGui"):SetCore("SendNotification", {
+                        Title = "Sistema";
+                        Text = "Sua Tesla foi spawnada na garagem."
+                    })
+                    game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Garagem"):FireServer("Tesla", "CV")
+                end);
+                
+                
+                Module.new()
+                :setLabel(string.format("Feito por Pedroxz63", "Hypee"))
+                :lock()
+            })        
+  	end    
+})
+CarroTab:AddButton({
+	Name = "God Mode Veiculo",
+	Callback = function()
+        godmode = true
+ 
+        game:GetService('RunService').Stepped:connect(function()
+            if godmode == true then
+                if game.Players.LocalPlayer.Character ~= nil then
+                    if game.Players.LocalPlayer.Character:FindFirstChild("Right Leg") then
+                        game.Players.LocalPlayer.Character:FindFirstChild("Right Leg"):Destroy()
+                    end
+                end
+            end
+            end)
+         
+         
+        game.Players.LocalPlayer.Chatted:Connect(function(msg)
+        local lower = string.lower(msg)
+         
+        if string.find(lower,";god") then
+            godmode = true       
+        game.Players.LocalPlayer.Character:BreakJoints()
+        end
+         
+        if string.find(lower,";ungod") then
+            godmode = false      
+        game.Players.LocalPlayer.Character:BreakJoints()
+        end
+        end)
+        --[[
+        Made by Link
+        --]]
+        
+  	end    
+})
+CarroTab:AddButton({
+	Name = "Veiculo Fly",
+	Callback = function()
+        local ScreenGui = Instance.new("ScreenGui")
+        local main = Instance.new("Frame")
+        local flycar = Instance.new("TextButton")
+        local Close = Instance.new("TextButton")
+        local openmain = Instance.new("Frame")
+        local open = Instance.new("TextButton")
+         
+        ScreenGui.Parent = game.CoreGui
+         
+        main.Name = "Flying Car"
+        main.Parent = ScreenGui
+        main.BackgroundColor3 = Color3.fromRGB(112, 255, 133)
+        main.Position = UDim2.new(0.0598930493, 0, 0.716088295, 0)
+        main.Size = UDim2.new(0, 120, 0, 108)
+        main.Visible = false
+        main.Active = true
+        main.Draggable = true
+         
+        flycar.Name = "CarV1"
+        flycar.Parent = main
+        flycar.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        flycar.Position = UDim2.new(0, 0, 0.268518507, 0)
+        flycar.Size = UDim2.new(0, 120, 0, 50)
+        flycar.Style = Enum.ButtonStyle.RobloxButton
+        flycar.Font = Enum.Font.Gotham
+        flycar.Text = "Car Fly Pedroxz"
+        flycar.TextColor3 = Color3.fromRGB(85, 170, 255)
+        flycar.TextSize = 14.000
+        flycar.MouseButton1Click:connect(function()
+            local Tool = Instance.new("HopperBin")
+        Tool.Parent = game.Players.LocalPlayer.Backpack
+        Tool.Name = "กดปุ่ม R บิน"
+        local hint = Instance.new("Hint",game.Players.LocalPlayer.PlayerGui)
+           hint.Text = "Car Fly Pedroxz"
+           hint.Name = game.JobId
+        repeat wait()
+            until game.Players.LocalPlayer and game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:findFirstChild("Torso") and game.Players.LocalPlayer.Character:findFirstChild("Humanoid")
+        local mouse = game.Players.LocalPlayer:GetMouse()
+        repeat wait() until mouse
+        local plr = game.Players.LocalPlayer
+        local torso = plr.Character.Torso
+        local flying = true
+        local deb = true
+        local ctrl = {f = 0, b = 0, l = 0, r = 0}
+        local lastctrl = {f = 0, b = 0, l = 0, r = 0}
+        local maxspeed = 200
+        local speed = 0
+         
+        function Fly()
+        local bg = Instance.new("BodyGyro", torso)
+        bg.P = 9e4
+        bg.maxTorque = Vector3.new(9e9, 9e9, 9e9)
+        bg.cframe = torso.CFrame
+        local bv = Instance.new("BodyVelocity", torso)
+        bv.velocity = Vector3.new(0,0.1,0)
+        bv.maxForce = Vector3.new(9e9, 9e9, 9e9)
+        repeat wait()
+        plr.Character.Humanoid.PlatformStand = false
+        if ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0 then
+        speed = speed+125.0+(speed/maxspeed)
+        if speed > maxspeed then
+        speed = maxspeed
+        end
+        elseif not (ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0) and speed ~= 0 then
+        speed = speed-250
+        if speed < 0 then
+        speed = 0
+        end
+        end
+        if (ctrl.l + ctrl.r) ~= 0 or (ctrl.f + ctrl.b) ~= 0 then
+        bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (ctrl.f+ctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(ctrl.l+ctrl.r,(ctrl.f+ctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed
+        lastctrl = {f = ctrl.f, b = ctrl.b, l = ctrl.l, r = ctrl.r}
+        elseif (ctrl.l + ctrl.r) == 0 and (ctrl.f + ctrl.b) == 0 and speed ~= 0 then
+        bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (lastctrl.f+lastctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(lastctrl.l+lastctrl.r,(lastctrl.f+lastctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed
+        else
+        bv.velocity = Vector3.new(0,0.1,0)
+        end
+        bg.cframe = game.Workspace.CurrentCamera.CoordinateFrame * CFrame.Angles(-math.rad((ctrl.f+ctrl.b)*50*speed/maxspeed),0,0)
+        until not flying
+        ctrl = {f = 0, b = 0, l = 0, r = 0}
+        lastctrl = {f = 0, b = 0, l = 0, r = 0}
+        speed = 0
+        bg:Destroy()
+        bv:Destroy()
+        plr.Character.Humanoid.PlatformStand = false
+        end
+        mouse.KeyDown:connect(function(key)
+        if key:lower() == "r" then
+        if flying then flying = false
+        else
+        flying = true
+        Fly()
+        end
+        elseif key:lower() == "w" then
+        ctrl.f = 1
+        elseif key:lower() == "s" then
+        ctrl.b = -1
+        elseif key:lower() == "a" then
+        ctrl.l = -1
+        elseif key:lower() == "d" then
+        ctrl.r = 1
+        end
+        end)
+        mouse.KeyUp:connect(function(key)
+        if key:lower() == "w" then
+        ctrl.f = 0
+        elseif key:lower() == "s" then
+        ctrl.b = 0
+        elseif key:lower() == "a" then
+        ctrl.l = 0
+        elseif key:lower() == "d" then
+        ctrl.r = 0
+        end
+        wait(5)
+        hint:Destroy()
+        end)
+        Fly()
+        end)    
+         
+         
+        Close.Name = "Close"
+        Close.Parent = main
+        Close.BackgroundColor3 = Color3.fromRGB(255, 32, 140)
+        Close.Position = UDim2.new(0.675000012, 0, 0, 0)
+        Close.Size = UDim2.new(0, 39, 0, 29)
+        Close.Text = "X"
+        Close.TextColor3 = Color3.fromRGB(0, 0, 0)
+        Close.TextSize = 14.000
+        Close.MouseButton1Down:connect(function()
+        main.Visible = false
+        openmain.Visible = true
+        end)
+         
+        openmain.Name = "openmain"
+        openmain.Parent = ScreenGui
+        openmain.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        openmain.Position = UDim2.new(0.00641711242, 0, 0.54574132, 0)
+        openmain.Size = UDim2.new(0, 100, 0, 26)
+        openmain.Active = true
+        openmain.Draggable = true
+         
+        open.Name = "open"
+        open.Parent = openmain
+        open.BackgroundColor3 = Color3.fromRGB(255, 177, 42)
+        open.Size = UDim2.new(0, 100, 0, 26)
+        open.Text = "Car Fly Pedroxz"
+        open.TextColor3 = Color3.fromRGB(0, 0, 0)
+        open.TextSize = 14.000
+        open.MouseButton1Down:connect(function()
+        openmain.Visible = false
+        main.Visible = true
+        end)
+         
+        game:GetService("StarterGui"):SetCore("SendNotification", {
+        Title = "Car Fly Pedroxz";
+        Text = [[Car Fly Pedroxz
+            Car Fly Pedroxz :D 
+            555555555]];
+        })
+  	end    
+})
+local Section = ArmaTab:AddSection({
+	Name = "Ativar/Desativar"
+})
+ArmaTab:AddButton({
+    Name = "Rapid Fire",
+    Callback = function()
+        for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetDescendants()) do
+			if v:IsA("ModuleScript") and v.Name == "Settings" then
+				local a = require(v)
+				a.Bullets = 9
+				a.Mode = "Auto"
+				a.VRecoil = {0,0}
+				a.HRecoil = {0,0}
+				a.Distance = 100000000
+				a.BDrop = 0
+				a.RandomTracer = false
+				a.TracerEveryXShots = 1
+				a.FireRate = 950
+				a.FocusOnSight = true
+				for i,v in pairs(a) do
+					print(i,v) 
+				end 
+			end 
+		end
+    end   
 })  
+ArmaTab:AddButton({
+	Name = "Sem Recuo",
+	Callback = function()
+        local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/turtle"))()
+        library.flags = { }
+        local nr = library:Window("No Recoil")
+        
+        
+        library.flags["value_1"] = 1
+        library.flags["value_2"] = 1
+        library.flags["value_3"] = 1
+        
+        nr:Slider("Value 1", 1, 10, 1, function(value)
+          library.flags["value_1"] = value
+        end)
+        nr:Slider("Value 2", 1, 100, 1, function(value)
+          library.flags["value_2"] = value
+        end)
+        nr:Slider("Value 3", 1, 10, 1, function(value)
+          library.flags["value_3"] = value
+           
+        end)
+        
+        
+        local old
+        old = hookfunction(math.random, function(...)
+           local args = {...}
+        
+           -- handle if no args, math.random() (0, 1.0)
+           if args[1] == nil then
+               return old() / library.flags["value_1"]
+           end
+        
+           -- handle if upper bound. math.random(10) (1, 10)
+           if args[2] == nil then
+               return old(args[1] / library.flags["value_2"])
+           end
+        
+           -- handle if lower and upper bound. math.random(-5, 5) (-5, 5)
+        
+           return old(args[1], args[2] / library.flags["value_3"])
+        end)
+  	end    
+})
 local Section = PlayersTab:AddSection({
 	Name = "Exclusivo"
     })
@@ -267,7 +723,7 @@ loadstring(game:HttpGet(Source .. "Loader.lua"),"Loader")(Branch,NotificationTim
           end
     })
     PlayersTab:AddButton({
-        Name = "ACS Hub (50%)",
+        Name = "ACS Hub V1 - Risco",
         Callback = function()
             loadstring(game:HttpGet("https://raw.githubusercontent.com/StoneDev47/KLB-HUB---ACS/main/mainhub", true))()
           end
@@ -306,7 +762,7 @@ character:MoveTo(pos)
           end 
     })
     local Section = TrollTab:AddSection({
-        Name = "Op troll"
+        Name = "Troll"
     })
     TrollTab:AddButton({
         Name = "Chat Spamer GUI (Risco ban na conta!!)",
@@ -479,8 +935,12 @@ end)
             loadstring(game:HttpGet(("https://raw.githubusercontent.com/GameLeaks2/RobloxScripts/main/CrashServer"),true))()
           end   
         })
-    PlayersTab:AddButton({
-        Name = "Auto farm Cidade Alta",
+local Section = plrTab:AddSection({
+	Name = "Cda"
+})
+
+    plrTab:AddButton({
+        Name = "Auto farm Cidade Alta V1",
         Callback = function()
             local player = game.Players.LocalPlayer
 local hum = player.Character:FindFirstChild("Humanoid")
@@ -502,10 +962,25 @@ while shared.a and hum.Sit do
 end
           end   
         })
+local Section = plrTab:AddSection({
+	Name = "Eb farm"
+})
+plrTab:AddButton({
+    Name = "Auto Farm @Kauezindo_Eb",
+    Callback = function()
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/arandomuser0/scriptroblox/main/autofarmeb.lua'))()
+      end   
+    })
     TrollTab:AddButton({
-        Name = "Hub Com Op Trolls (Funcionando em algums eb/rp)",
+        Name = "Hub Com Op Trolls - Funcionando em algums eb/rp",
         Callback = function()
             loadstring(game:HttpGet("https://raw.githubusercontent.com/Arthurkla/teste/main/ViethinScript2", true))()
+          end   
+        })
+    TrollTab:AddButton({
+        Name = "Hub Super Troll - Bypass",
+        Callback = function()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/i4mitty/Peruanito.exe/main/Peruanito.exe.lua"))()
           end   
         })
     TrollTab:AddButton({
@@ -514,6 +989,20 @@ end
             loadstring(game:HttpGet('https://bifao.tech/scripts/ilhabela.lol'))()
           end   
         })
+TrollTab:AddButton({
+	Name = "IntValueNumber",
+	Callback = function()
+        local Evt_R = game:service('ReplicatedStorage')["ACS_Engine"].Events:FindFirstChild("Refil")
+		local Quant = -99999999999999000999
+	
+		for i,v in pairs(game:GetDescendants()) do
+			if v:IsA("IntValue") or v:IsA("NumberValue") then
+				Evt_R:FireServer(v,-(Quant-v.Value))
+			end
+		end
+  	end    
+})
+
     PlayersTab:AddButton({
         Name = "V1 (Troll) - Tool risco",
         Callback = function()
@@ -561,6 +1050,9 @@ game.StarterGui:SetCore("SendNotification", {
 })
           end   
         })
+local Section = TrollTab:AddSection({
+	Name = "Pedroxz Menu Exclusive Options Troll"
+})
     TrollTab:AddButton({
         Name = "Puxar geral - Risco",
         Callback = function()
@@ -1097,42 +1589,71 @@ local Section = RoleplayTab:AddSection({
 	Name = "RP"
 })
     RoleplayTab:AddButton({
-        Name = "Deletar roupa de geral - Se não funfa use A versão V1",
+        Name = "Deletar Roupa Geral",
         Callback = function()
-            local Button = script.Parent.DeletarRoupaButton
-	
-            Button.MouseButton1Down:Connect(function()
-                Button.BackgroundColor3 = (Button.Visible and Color3.fromRGB(38, 112, 112)) or Color3.fromRGB(72, 72, 72)
-            
-                local rmt = game:service'ReplicatedStorage':FindFirstChild("DeleteCar")
-                for i,v in pairs(game:GetService("Workspace"):GetDescendants()) do
-                    if  v:IsA("Shirt") or v:IsA("Pants")  then
-                        rmt:FireServer(v) 
-                    end
+            local rmt = game:service'ReplicatedStorage':FindFirstChild("DeleteCar")
+            for i,v in pairs(game:GetService("Workspace"):GetDescendants()) do
+                if  v:IsA("Shirt") or v:IsA("Pants")  then
+                    rmt:FireServer(v) 
                 end
-            
-            end)
+            end
           end   
     })
     RoleplayTab:AddButton({
-        Name = "Deletar Mapa - Se não funfa use A versão V1",
+        Name = "Deletar Mapa",
         Callback = function()
-            local Button = script.Parent.DeletarMapaButton
-	
-            Button.MouseButton1Down:Connect(function()
-                Button.BackgroundColor3 = (Button.Visible and Color3.fromRGB(38, 112, 112)) or Color3.fromRGB(72, 72, 72)
-            
-                local rmt = game:service'ReplicatedStorage':FindFirstChild("DeleteCar")
-                for i,v in next, workspace:GetChildren() do
-                    rmt:FireServer(v)
-                end
-            
-            end)
-            
+            local rmt = game:service'ReplicatedStorage':FindFirstChild("DeleteCar")
+            for i,v in next, workspace:GetChildren() do
+                rmt:FireServer(v)
+            end
           end   
-        })
+    })
+    RoleplayTab:AddButton({
+        Name = "Creeper Geral",
+        Callback = function()
+            local rmt = game:service'ReplicatedStorage':FindFirstChild("DeleteCar")
+		for i,v in pairs(game:GetService("Workspace"):GetDescendants()) do
+			if v:IsA("SpecialMesh") or v:IsA("Shirt") or v:IsA("Pants") or v:IsA("Part") and v.Name == "Right Arm" or v.Name == "Left Arm" then
+				rmt:FireServer(v) 
+			end
+		end
+        end   
+    }) 
+RoleplayTab:AddButton({
+	Name = "Explodir Geral",
+	Callback = function()
+        local rem,_t,players = game:GetService("ReplicatedStorage").ACS_Engine.Eventos.Hit,{ExplosiveHit=true,ExPressure=math.huge,ExpRadius=math.huge,DestroyJointRadiusPercent=math.huge,ExplosionDamage=math.huge},game:GetService('Players')
+	
+		for i,v in next, players:GetPlayers() do 
+			local ppart = v['Character'].PrimaryPart
+			pcall(function()
+				rem:FireServer(ppart.Position,ppart,ppart.Position,Enum.Material.ForceField,_t)
+			end)
+		end
+  	end 
+})
+RoleplayTab:AddButton({
+	Name = "Tool Destruir",
+	Callback = function()
+        local Mouse = game.Players.LocalPlayer:GetMouse()
+	
+		local Tool = Instance.new('Tool',game.Players.LocalPlayer.Backpack)
+		Tool.CanBeDropped = false
+		Tool.Name = "Destruir"
+		Tool.RequiresHandle = false 
+	
+		local rmt = game:GetService("ReplicatedStorage").DeleteCar
+	
+		Tool.Activated:connect(function() 
+			rmt:FireServer(Mouse.Target)
+		end)
+  	end    
+})
 local Section = AdmTab:AddSection({
-	Name = "ADM - OP"
+	Name = "Admin"
+        })
+local Section = RoleplayTab:AddSection({
+	Name = "Option Banir/Expulsar"
     })
     RoleplayTab:AddButton({
         Name = "Banir Jogadores",
@@ -1145,7 +1666,7 @@ Duration = 15; -- how long the notification should in secounds
 end      
 })
     RoleplayTab:AddButton({
-        Name = "Expulsar Jogadores",
+        Name = "Expulsar Jogares",
         Callback = function()
             game.StarterGui:SetCore("SendNotification", {
 Title = "Metodo pra expulsar Geral!?"; -- the title 
@@ -1455,6 +1976,41 @@ JogadorTab:AddButton({
         end)
   	end    
 })
+JogadorTab:AddButton({
+	Name = "Stamina Inf.",
+	Callback = function()
+        local function SetInfiniteStamina(player)
+            local humanoid = player.Character and player.Character:FindFirstChild("Humanoid")
+            if humanoid then
+                humanoid.MaxHealth = math.huge
+                humanoid.Health = math.huge
+            end
+        end
+        
+        -- Conectar a função ao evento de entrada do jogador
+        game.Players.PlayerAdded:Connect(function(player)
+            player.CharacterAdded:Connect(function()
+                SetInfiniteStamina(player)
+            end)
+        end)
+  	end    
+})
+JogadorTab:AddButton({
+	Name = "Anti Ragdoll",
+	Callback = function()
+        spawn(function()
+            while game:GetService("RunService").Heartbeat:Wait() do
+                local chr = game.Players.LocalPlayer.Character
+         
+                for _,v in pairs(chr:GetChildren()) do
+                    if v:IsA("BallSocketConstraint") or v:IsA("HingeConstraint") or v.Name == "Controls" or v.Name == "Local Ragdoll" or v.Name == "State Handler" or v.Name == "FirstPerson" or v.Name == "FakeAdmin" then
+                        v:Destroy()
+                    end
+                end
+            end
+        end)
+    end
+        })
         JogadorTab:AddButton({
             Name = "Auto JJs",
             Callback = function()
@@ -1479,13 +2035,25 @@ JogadorTab:AddButton({
     end
   	end    
 })          
-        JogadorTab:AddButton({
-            Name = "Aimbot V2 (Head)",
+        ArmaTab:AddButton({
+            Name = "Aimbot Bypass",
             Callback = function()
                 loadstring(game:HttpGet(('https://raw.githubusercontent.com/Exunys/Aimbot-V2/main/Resources/Scripts/Main.lua'),true))()
                 
               end                           
     })
+ArmaTab:AddButton({
+	Name = "Bala Explosiva",
+	Callback = function()
+        for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetDescendants()) do
+			if v:IsA("ModuleScript") and v.Name == "Settings" then
+				local a = require(v)	
+				a.ExplosiveHit = true
+				a.Expradius = 50
+			end
+		end
+  	end    
+})
 local Section = MenusTab:AddSection({
 	Name = "Menus"
 })
@@ -1537,47 +2105,207 @@ local Section = MenusTab:AddSection({
           end        
         })
 local Section = JogadorTab:AddSection({
-	Name = "Geral"
+	Name = "Recomendado"
 })
 JogadorTab:AddToggle({
-	Name = "Anti ADM",
+	Name = "Anti Staff",
 	Default = false,
 	Callback = function(Value)
 		print(Value)
 	end 
 })
 JogadorTab:AddToggle({
-	Name = "Matar Geral - Loop",
+	Name = "Modo Serial Killer",
 	Default = false,
 	Callback = function(Value)
 		_G.Loop = Value
         Loop()
-	end    
+	end   
+}) 
+JogadorTab:AddButton({
+	Name = "Ficar Invisivel - Bind",
+	Callback = function()
+        local ScriptStarted = false
+        local Keybind = "E" --Set to whatever you want, has to be the name of a KeyCode Enum.
+        local Transparency = true --Will make you slightly transparent when you are invisible. No reason to disable.
+        local NoClip = false --Will make your fake character no clip.
+        local Player = game:GetService("Players").LocalPlayer
+        local RealCharacter = Player.Character or Player.CharacterAdded:Wait()
+        local IsInvisible = false
+        RealCharacter.Archivable = true
+        local FakeCharacter = RealCharacter:Clone()
+        local Part
+        Part = Instance.new("Part", workspace)
+        Part.Anchored = true
+        Part.Size = Vector3.new(200, 1, 200)
+        Part.CFrame = CFrame.new(0, -500, 0) --Set this to whatever you want, just far away from the map.
+        Part.CanCollide = true
+        FakeCharacter.Parent = workspace
+        FakeCharacter.HumanoidRootPart.CFrame = Part.CFrame * CFrame.new(0, 5, 0)
+        for i, v in pairs(RealCharacter:GetChildren()) do
+          if v:IsA("LocalScript") then
+              local clone = v:Clone()
+              clone.Disabled = true
+              clone.Parent = FakeCharacter
+          end
+        end
+        if Transparency then
+          for i, v in pairs(FakeCharacter:GetDescendants()) do
+              if v:IsA("BasePart") then
+                  v.Transparency = 0.7
+              end
+          end
+        end
+        local CanInvis = true
+        function RealCharacterDied()
+          CanInvis = false
+          RealCharacter:Destroy()
+          RealCharacter = Player.Character
+          CanInvis = true
+          isinvisible = false
+          FakeCharacter:Destroy()
+          workspace.CurrentCamera.CameraSubject = RealCharacter.Humanoid
+          RealCharacter.Archivable = true
+          FakeCharacter = RealCharacter:Clone()
+          Part:Destroy()
+          Part = Instance.new("Part", workspace)
+          Part.Anchored = true
+          Part.Size = Vector3.new(200, 1, 200)
+          Part.CFrame = CFrame.new(9999, 9999, 9999) --Set this to whatever you want, just far away from the map.
+          Part.CanCollide = true
+          FakeCharacter.Parent = workspace
+          FakeCharacter.HumanoidRootPart.CFrame = Part.CFrame * CFrame.new(0, 5, 0)
+          for i, v in pairs(RealCharacter:GetChildren()) do
+              if v:IsA("LocalScript") then
+                  local clone = v:Clone()
+                  clone.Disabled = true
+                  clone.Parent = FakeCharacter
+              end
+          end
+          if Transparency then
+              for i, v in pairs(FakeCharacter:GetDescendants()) do
+                  if v:IsA("BasePart") then
+                      v.Transparency = 0.7
+                  end
+              end
+          end
+         RealCharacter.Humanoid.Died:Connect(function()
+         RealCharacter:Destroy()
+         FakeCharacter:Destroy()
+         end)
+         Player.CharacterAppearanceLoaded:Connect(RealCharacterDied)
+        end
+        RealCharacter.Humanoid.Died:Connect(function()
+         RealCharacter:Destroy()
+         FakeCharacter:Destroy()
+         end)
+        Player.CharacterAppearanceLoaded:Connect(RealCharacterDied)
+        local PseudoAnchor
+        game:GetService "RunService".RenderStepped:Connect(
+          function()
+              if PseudoAnchor ~= nil then
+                  PseudoAnchor.CFrame = Part.CFrame * CFrame.new(0, 5, 0)
+              end
+               if NoClip then
+              FakeCharacter.Humanoid:ChangeState(11)
+               end
+          end
+        )
+        PseudoAnchor = FakeCharacter.HumanoidRootPart
+        local function Invisible()
+          if IsInvisible == false then
+              local StoredCF = RealCharacter.HumanoidRootPart.CFrame
+              RealCharacter.HumanoidRootPart.CFrame = FakeCharacter.HumanoidRootPart.CFrame
+              FakeCharacter.HumanoidRootPart.CFrame = StoredCF
+              RealCharacter.Humanoid:UnequipTools()
+              Player.Character = FakeCharacter
+              workspace.CurrentCamera.CameraSubject = FakeCharacter.Humanoid
+              PseudoAnchor = RealCharacter.HumanoidRootPart
+              for i, v in pairs(FakeCharacter:GetChildren()) do
+                  if v:IsA("LocalScript") then
+                      v.Disabled = false
+                  end
+              end
+              IsInvisible = true
+          else
+              local StoredCF = FakeCharacter.HumanoidRootPart.CFrame
+              FakeCharacter.HumanoidRootPart.CFrame = RealCharacter.HumanoidRootPart.CFrame
+         
+              RealCharacter.HumanoidRootPart.CFrame = StoredCF
+         
+              FakeCharacter.Humanoid:UnequipTools()
+              Player.Character = RealCharacter
+              workspace.CurrentCamera.CameraSubject = RealCharacter.Humanoid
+              PseudoAnchor = FakeCharacter.HumanoidRootPart
+              for i, v in pairs(FakeCharacter:GetChildren()) do
+                  if v:IsA("LocalScript") then
+                      v.Disabled = true
+                  end
+              end
+              IsInvisible = false
+          end
+        end
+        game:GetService("UserInputService").InputBegan:Connect(
+          function(key, gamep)
+              if gamep then
+                  return
+              end
+              if key.KeyCode.Name:lower() == Keybind:lower() and CanInvis and RealCharacter and FakeCharacter then
+                  if RealCharacter:FindFirstChild("HumanoidRootPart") and FakeCharacter:FindFirstChild("HumanoidRootPart") then
+                      Invisible()
+                  end
+              end
+          end
+        )
+        local Sound = Instance.new("Sound",game:GetService("SoundService"))
+        Sound.SoundId = "rbxassetid://232127604"
+        Sound:Play()
+        game:GetService("StarterGui"):SetCore("SendNotification",{["Title"] = "Invisivel Carregado!",["Text"] = "Pressione "..Keybind.." Para usar o invisivel!",["Duration"] = 20,["Button1"] = "Okay."})
+  	end    
+})
+local Section = JogadorTab:AddSection({
+	Name = "Geral"
 })
     JogadorTab:AddButton({
-        Name = "Puxar Pistola (CDA) - Risco detect",
+        Name = "Control Click TP - Bypass",
         Callback = function()
-            local args = {
-                [1] = game:GetService("Players").LocalPlayer.Backpack.G17,
-                [2] = 2
-            }
-            
-            game:GetService("ReplicatedStorage")["|| ACS_232-NXZ ||"].Events.Equip:FireServer(unpack(args))
-            wait(00000000.1)
-          end  
+            local UIS = game:GetService("UserInputService")
+ 
+local Player = game.Players.LocalPlayer
+local Mouse = Player:GetMouse()
+ 
+ 
+function GetCharacter()
+   return game.Players.LocalPlayer.Character
+end
+ 
+function Teleport(pos)
+   local Char = GetCharacter()
+   if Char then
+       Char:MoveTo(pos)
+   end
+end
+ 
+ 
+UIS.InputBegan:Connect(function(input)
+   if input.UserInputType == Enum.UserInputType.MouseButton1 and UIS:IsKeyDown(Enum.KeyCode.LeftControl) then
+       Teleport(Mouse.Hit.p)
+   end
+end)
+            end
         })
-    JogadorTab:AddButton({
-        Name = "Rapid fire (CDA) - Risco",
-        Callback = function()
-            local args = {
-                [1] = game:GetService("Players").LocalPlayer.Character.G17,
-                [2] = false,
-                [3] = false
-            }
-            
-            game:GetService("ReplicatedStorage")["|| ACS_232-NXZ ||"].Events.Atirar:FireServer(unpack(args))
-          end           
-        })
+JogadorTab:AddButton({
+	Name = "Comprar Fusca Cda - Sem ter Money",
+	Callback = function()
+        local args = {
+            [1] = "dealership",
+            [2] = "Fusca"
+        }
+        
+        game:GetService("ReplicatedStorage").ConcessionariaRS.Remotes.Check:InvokeServer(unpack(args))
+        wait(1)
+  	end    
+})
     JogadorTab:AddButton({
         Name = "Trigger - Gerar logs",
         Callback = function()
@@ -4166,13 +4894,13 @@ local Section = PlayersTab:AddSection({
 	Name = "Player"
 })
     PlayersTab:AddButton({
-        Name = "Voar (Novo)",
+        Name = "Voar - Bypass",
         Callback = function()
             loadstring("\108\111\97\100\115\116\114\105\110\103\40\103\97\109\101\58\72\116\116\112\71\101\116\40\40\39\104\116\116\112\115\58\47\47\103\105\115\116\46\103\105\116\104\117\98\117\115\101\114\99\111\110\116\101\110\116\46\99\111\109\47\109\101\111\122\111\110\101\89\84\47\98\102\48\51\55\100\102\102\57\102\48\97\55\48\48\49\55\51\48\52\100\100\100\54\55\102\100\99\100\51\55\48\47\114\97\119\47\101\49\52\101\55\52\102\52\50\53\98\48\54\48\100\102\53\50\51\51\52\51\99\102\51\48\98\55\56\55\48\55\52\101\98\51\99\53\100\50\47\97\114\99\101\117\115\37\50\53\50\48\120\37\50\53\50\48\102\108\121\37\50\53\50\48\50\37\50\53\50\48\111\98\102\108\117\99\97\116\111\114\39\41\44\116\114\117\101\41\41\40\41\10\10")()
           end   
 })
     PlayersTab:AddButton({
-        Name = "Noclip",
+        Name = "Atravessar Parade",
         Callback = function()
             -- Farewell Infortality.
 -- Version: 2.82
@@ -4350,7 +5078,39 @@ Section:NewButton("Teleport", " ", function()
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[Select].Character.HumanoidRootPart.CFrame
 end)
           end   
-})              
+})  
+local Section = PlayersTab:AddSection({
+	Name = "Cheat"
+})
+    PlayersTab:AddButton({
+        Name = "Bugar Nick - Ninguem ver seu nick(eb do tevez)",
+        Callback = function()
+            local Dipostivo = "Discreto"
+game:GetService("ReplicatedStorage").Remotes.Dispositivo:FireServer("Discreto") game.Players.LocalPlayer.Character:BreakJoints()
+          end    
+})
+PlayersTab:AddButton({
+	Name = "+18 Troll",
+	Callback = function()
+        local Victim='Pedroxz'
+        local A=Instance.new'Animation'
+        A.AnimationId='rbxassetid://148840371'
+        local P=game:GetService'Players'.LocalPlayer
+        local C=P.Character or P.CharacterAdded:Wait()
+        local H=C:WaitForChild'Humanoid':LoadAnimation(A)
+        H:Play()
+        H:AdjustSpeed(2.5)
+        game:GetService'RunService'.Stepped:Connect(function()
+            C:WaitForChild'HumanoidRootPart'.CFrame=CFrame.new(game:GetService'Players':FindFirstChild(Victim).Character:WaitForChild'HumanoidRootPart'.Position)
+        end)
+  	end    
+})
+PlayersTab:AddButton({
+	Name = "Staffs Proximo - Esp",
+	Callback = function()
+      	print("button pressed")
+  	end    
+})
 local Section = PlayersTab:AddSection({
 	Name = "Metodos"
 })    
@@ -4382,6 +5142,15 @@ game.StarterGui:SetCore("SendNotification", {
 })
           end        
     })
+PlayersTab:AddButton({
+	Name = "Puxar Dinheiro 3 (Click)",
+	Callback = function()
+      		local Player = game.Players.LocalPlayer
+local Dinheiro = Player.leaderstats.Dinheiro
+
+Dinheiro.Value = 99999999
+  	end    
+})
     MenusTab:AddButton({
         Name = "Infinite yield",
         Callback = function()
@@ -4400,29 +5169,516 @@ game.StarterGui:SetCore("SendNotification", {
             loadstring(game:HttpGet('https://raw.githubusercontent.com/Pedroxz63/KakahMenuBypedroxz631/main/README.md'))()
           end     
     })
+    MenusTab:AddButton({
+        Name = "Pedroxz Hub Troll",
+        Callback = function()
+            loadstring(game:HttpGet"https://raw.githubusercontent.com/Pedroxz63/HubTrollPedroxz63/main/README.md")()
+          end     
+    })
+    MenusTab:AddButton({
+        Name = "Full troll Hub - RP do @weeyssom (se brincar funciona em outros)",
+        Callback = function()
+            --Instances
+local plr = game.Players.LocalPlayer
+local Troll = Instance.new("ScreenGui")
+local UiCorner1 = Instance.new("UICorner")
+local UiCorner2 = Instance.new("UICorner")
+local UiCorner3 = Instance.new("UICorner")
+local UiCorner4 = Instance.new("UICorner")
+local UiCorner6 = Instance.new("UICorner")
+local UiCorner8 = Instance.new("UICorner")
+local UiCorner7 = Instance.new("UICorner")
+local UiCorner10 = Instance.new("UICorner")
+local UiCorner2222 = Instance.new("UICorner")
+local UiCorner15 = Instance.new("UICorner")
+local UiCorner5 = Instance.new("UICorner")
+local UiGradient = Instance.new("UIGradient")
+local UiGradient2 = Instance.new("UIGradient")
+local UiGradient15 = Instance.new("UIGradient")
+local TextBox = Instance.new("TextBox")
+local TextBox2 = Instance.new("TextBox")
+local frame = Instance.new("Frame")
+local frame2 = Instance.new("Frame")
+local UiCorner9 = Instance.new("UICorner")
+local UiCorner14 = Instance.new("UICorner")
+local UiCorner11 = Instance.new("UICorner")
+local UiCorner16 = Instance.new("UICorner")
+local UiCorner13 = Instance.new("UICorner")
+local UiCorner12 = Instance.new("UICorner")
+local UiCorner15 = Instance.new("UICorner")
+local UiCorner17 = Instance.new("UICorner")
+local UiCorner18 = Instance.new("UICorner")
+local button1 = Instance.new("TextButton")
+local Close = Instance.new("TextButton")
+local Close2 = Instance.new("TextButton")
+local TextButton = Instance.new("TextButton")
+local TextButton2 = Instance.new("TextButton")
+local button2 = Instance.new("TextButton")
+local button10 = Instance.new("TextButton")
+local button8 = Instance.new("TextButton")
+local button3 = Instance.new("TextButton")
+local button4 = Instance.new("TextButton")
+local button5 = Instance.new("TextButton")
+local button6 = Instance.new("TextButton")
+local button7 = Instance.new("TextButton")
+local button9 = Instance.new("TextButton")
+local button11 = Instance.new("TextButton")
+local Titulo = Instance.new("TextLabel")
+local Titulo2 = Instance.new("TextLabel")
+
+-- Parte do ScreenGui
+Troll.Parent = plr.PlayerGui
+Troll.Name = "Trollador"
+Troll.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+Troll.ResetOnSpawn = false
+
+--Frame
+
+frame.Parent = Troll
+frame.Name = "Frame1"
+UiGradient.Parent = frame
+UiGradient.Color = ColorSequence.new(Color3.new(1, 1, 1), Color3.new(0.239216, 0.239216, 0.239216))
+frame.Active = true
+UiCorner1.Parent = frame
+frame.BackgroundColor3 = Color3.new(0.0980392, 0.0980392, 0.0980392)
+frame.Draggable = true
+frame.Position = UDim2.new(0.5, -150, 0.5, -67)
+frame.Size = UDim2.new(0, 300,0, 300)
+
+-- Titulo
+
+Titulo.Parent = frame
+Titulo.Position = UDim2.new(0.164, 0,0.029, 0)
+Titulo.BackgroundTransparency = 1
+Titulo.Size = UDim2.new(0, 200,0, 50)
+Titulo.Text = "Menu"
+Titulo.TextScaled = true
+Titulo.Font = Enum.Font.FredokaOne
+Titulo.TextColor3 = Color3.new(1, 1, 1)
+
+-- Titulo2
+
+Titulo2.Parent = frame2
+Titulo2.Position = UDim2.new(0.164, 0,0.029, 0)
+Titulo2.BackgroundTransparency = 1
+Titulo2.Size = UDim2.new(0, 200,0, 50)
+Titulo2.Text = "Menu"
+Titulo2.TextScaled = true
+Titulo2.Font = Enum.Font.FredokaOne
+Titulo2.TextColor3 = Color3.new(1, 1, 1)
+
+-- Importante 
+
+local Importante = Instance.new("TextLabel")
+Importante.Parent = frame
+Importante.Position = UDim2.new(0.001, 0,0.993, 3)
+Importante.BackgroundTransparency = 1
+Importante.Size = UDim2.new(0, 300,0, 30)
+Importante.Text = "Troll Pedroxz"
+Importante.TextScaled = true
+Importante.Font = Enum.Font.FredokaOne
+Importante.TextColor3 = Color3.new(0.215686, 1, 0)
+
+-- Importante 2
+
+local Importante2 = Instance.new("TextLabel")
+Importante2.Parent = frame2
+Importante2.Position = UDim2.new(0.001, 0,0.993, 3)
+Importante2.BackgroundTransparency = 1
+Importante2.Size = UDim2.new(0, 300,0, 30)
+Importante2.Text = "Troll Pedroxz"
+Importante2.TextScaled = true
+Importante2.Font = Enum.Font.FredokaOne
+Importante2.TextColor3 = Color3.new(0.215686, 1, 0)
+
+
+-- Close
+Close.Parent = frame
+Close.Position = UDim2.new(1.463, -150,0.01, -20)
+	Close.Size = UDim2.new(0, 30,0, 30)
+UiCorner8.Parent = Close
+	Close.BorderSizePixel = 0
+	Close.BackgroundColor3 = Color3.new(0.196078, 0.196078, 0.196078)
+	Close.TextColor3 = Color3.new(1, 0, 0)
+	Close.Text = "X"
+	Close.Font = Enum.Font.FredokaOne
+Close.TextScaled = true
+
+
+Close.MouseButton1Click:Connect(function()
+	plr.PlayerGui:FindFirstChild("Trollador"):Destroy()
+end)
+
+-- Botao1
+button1.Parent = frame
+button1.Position = UDim2.new(0.547, -150,0.497, -80)
+button1.Size = UDim2.new(0, 100,0, 50)
+UiCorner2.Parent = button1
+button1.BorderSizePixel = 0
+button1.BackgroundColor3 = Color3.new(0.219608, 0.219608, 0.219608)
+button1.TextColor3 = Color3.new(1, 1, 1)
+button1.Text = "Matar Jogadores"
+button1.Font = Enum.Font.FredokaOne
+button1.TextScaled = true
+
+-- Botao2
+
+button2.Parent = frame
+button2.Position = UDim2.new(1.12, -150,0.497, -80)
+button2.Size = UDim2.new(0, 100,0, 50)
+UiCorner3.Parent = button2
+button2.BorderSizePixel = 0
+button2.BackgroundColor3 = Color3.new(0.219608, 0.219608, 0.219608)
+button2.TextColor3 = Color3.new(1, 1, 1)
+button2.Text = "Deixar geral peladinho"
+button2.Font = Enum.Font.FredokaOne
+button2.TextScaled = true
+
+-- Botao3
+
+button3.Parent = frame
+button3.Position = UDim2.new(1.12, -150,0.497, -5)
+button3.Size = UDim2.new(0, 100,0, 50)
+UiCorner4.Parent = button3
+button3.BorderSizePixel = 0
+button3.BackgroundColor3 = Color3.new(0.219608, 0.219608, 0.219608)
+button3.TextColor3 = Color3.new(1, 1, 1)
+button3.Text = "Geral Cotoco"
+button3.Font = Enum.Font.FredokaOne
+button3.TextScaled = true
+
+-- Botao4
+
+button4.Parent = frame
+button4.Position = UDim2.new(0.547, -150,0.497, -5)
+button4.Size = UDim2.new(0, 100,0, 50)
+UiCorner5.Parent = button4
+button4.BorderSizePixel = 0
+button4.BackgroundColor3 = Color3.new(0.219608, 0.219608, 0.219608)
+button4.TextColor3 = Color3.new(1, 0, 0)
+button4.Text = "DESTRUIR O JOGO"
+button4.Font = Enum.Font.FredokaOne
+button4.TextScaled = true
+
+-- Proximo
+
+button5.Parent = frame
+button5.Name = "Proximo"
+button5.Position = UDim2.new(1.59, -150,0.497, -20)
+button5.Size = UDim2.new(0, 50,0, 50)
+UiCorner10.Parent = button5
+button5.BorderSizePixel = 0
+button5.BackgroundColor3 = Color3.new(0.121569, 0.121569, 0.121569)
+button5.TextColor3 = Color3.new(1, 0.294118, 0.964706)
+button5.Text = ">"
+button5.Font = Enum.Font.FredokaOne
+button5.TextScaled = true
+
+
+
+-- TextBox
+
+TextBox.Parent = frame
+UiCorner6.Parent = TextBox
+TextBox.Position = UDim2.new(0.047, 0,0.747, 0)
+TextBox.Size = UDim2.new(0, 200,0, 50)
+TextBox.BackgroundColor3 = Color3.new(0.219608, 0.219608, 0.219608)
+TextBox.TextColor3 = Color3.new(0.117647, 0.988235, 1)
+TextBox.PlaceholderColor3 = Color3.new(1, 1, 1)
+TextBox.Font = Enum.Font.FredokaOne
+TextBox.Text = ""
+TextBox.TextScaled = true
+TextBox.PlaceholderText = "Mata Player"
+
+
+-- TextButton
+
+	TextButton.Parent = frame
+	TextButton.Position = UDim2.new(1.297, -150,0.81, -20)
+	TextButton.Size = UDim2.new(0, 50,0, 50)
+	UiCorner7.Parent = TextButton
+	TextButton.BorderSizePixel = 0
+	TextButton.BackgroundColor3 = Color3.new(0.184314, 0.184314, 0.184314)
+	TextButton.TextColor3 = Color3.new(0.207843, 1, 0.882353)
+	TextButton.Text = ">"
+	TextButton.Font = Enum.Font.FredokaOne
+	TextButton.TextScaled = true
+
+-----------------------------------------------------------------------------------------------------------------
+
+-- Frame2
+
+frame2.Parent = Troll
+frame2.Name = "Frame2"
+frame2.Visible = false
+UiGradient2.Parent = frame2
+UiGradient2.Color = ColorSequence.new(Color3.new(1, 1, 1), Color3.new(0.239216, 0.239216, 0.239216))
+frame2.Active = true
+UiCorner12.Parent = frame2
+frame2.BackgroundColor3 = Color3.new(0.0980392, 0.0980392, 0.0980392)
+frame2.Draggable = true
+frame2.Position = UDim2.new(0.5, -150, 0.5, -67)
+frame2.Size = UDim2.new(0, 300,0, 300)
+
+
+-- Botao6
+
+button6.Parent = frame2
+button6.Position = UDim2.new(0.547, -150,0.497, -80)
+button6.Size = UDim2.new(0, 100,0, 50)
+UiCorner11.Parent = button6
+button6.BorderSizePixel = 0
+button6.BackgroundColor3 = Color3.new(0.219608, 0.219608, 0.219608)
+button6.TextColor3 = Color3.new(1, 1, 1)
+button6.Text = "ANTI-ADM"
+button6.Font = Enum.Font.FredokaOne
+button6.TextScaled = true
+
+
+-- Voltar
+
+button7.Parent = frame2
+button7.Name = "Voltar"
+button7.Position = UDim2.new(0.243, -150,0.48, -20)
+button7.Size = UDim2.new(0, 50,0, 50)
+UiCorner13.Parent = button7
+button7.BorderSizePixel = 0
+button7.BackgroundColor3 = Color3.new(0.121569, 0.121569, 0.121569)
+button7.TextColor3 = Color3.new(1, 0.294118, 0.964706)
+button7.Text = "<"
+button7.Font = Enum.Font.FredokaOne
+button7.TextScaled = true
+
+-- Close2
+Close2.Parent = frame2
+Close2.Position = UDim2.new(1.463, -150,0.01, -20)
+Close2.Size = UDim2.new(0, 30,0, 30)
+UiCorner2222.Parent = Close2
+Close2.BorderSizePixel = 0
+Close2.BackgroundColor3 = Color3.new(0.196078, 0.196078, 0.196078)
+Close2.TextColor3 = Color3.new(1, 0, 0)
+Close2.Text = "X"
+Close2.Font = Enum.Font.FredokaOne
+Close2.TextScaled = true
+
+Close2.MouseButton1Click:Connect(function()
+	plr.PlayerGui:FindFirstChild("Trollador"):Destroy()
+end)
+
+-- Botao8
+button8.Parent = frame2
+button8.Position = UDim2.new(1.12, -150,0.497, -80)
+button8.Size = UDim2.new(0, 100,0, 50)
+UiCorner14.Parent = button8
+button8.BorderSizePixel = 0
+button8.BackgroundColor3 = Color3.new(0.219608, 0.219608, 0.219608)
+button8.TextColor3 = Color3.new(1, 1, 1)
+button8.Text = "Deletar o Workspace"
+button8.Font = Enum.Font.FredokaOne
+button8.TextScaled = true
+
+-- Botao9
+
+button9.Parent = frame2
+button9.Position = UDim2.new(0.547, -150,0.497, -5)
+button9.Size = UDim2.new(0, 100,0, 50)
+UiCorner15.Parent = button9
+button9.BorderSizePixel = 0
+button9.BackgroundColor3 = Color3.new(0.219608, 0.219608, 0.219608)
+button9.TextColor3 = Color3.new(1, 1, 1)
+button9.Text = "Clique e Destrua"
+button9.Font = Enum.Font.FredokaOne
+button9.TextScaled = true
+
+--
+
+button10.Parent = frame2
+button10.Position = UDim2.new(1.12, -150,0.497, -5)
+button10.Size = UDim2.new(0, 100,0, 50)
+UiCorner16.Parent = button10
+button10.BorderSizePixel = 0
+button10.BackgroundColor3 = Color3.new(0.219608, 0.219608, 0.219608)
+button10.TextColor3 = Color3.new(1, 1, 1)
+button10.Text = "Deletar Carros"
+button10.Font = Enum.Font.FredokaOne
+button10.TextScaled = true
+
+--
+
+-- TextBox2
+
+TextBox2.Parent = frame2
+UiCorner18.Parent = TextBox2
+TextBox2.Position = UDim2.new(0.047, 0,0.747, 0)
+TextBox2.Size = UDim2.new(0, 200,0, 50)
+TextBox2.BackgroundColor3 = Color3.new(0.219608, 0.219608, 0.219608)
+TextBox2.TextColor3 = Color3.new(0.117647, 0.988235, 1)
+TextBox2.PlaceholderColor3 = Color3.new(1, 1, 1)
+TextBox2.Font = Enum.Font.FredokaOne
+TextBox2.Text = ""
+TextBox2.TextScaled = true
+TextBox2.PlaceholderText = "Kickar Jogador"
+
+
+-- TextButton2
+
+TextButton2.Parent = frame2
+TextButton2.Position = UDim2.new(1.297, -150,0.81, -20)
+TextButton2.Size = UDim2.new(0, 50,0, 50)
+UiCorner17.Parent = TextButton2
+TextButton2.BorderSizePixel = 0
+TextButton2.BackgroundColor3 = Color3.new(0.184314, 0.184314, 0.184314)
+TextButton2.TextColor3 = Color3.new(0.207843, 1, 0.882353)
+TextButton2.Text = ">"
+TextButton2.Font = Enum.Font.FredokaOne
+TextButton2.TextScaled = true
+
+
+
+------------------------------------------------------------------------------------------------------------------
+
+button5.MouseButton1Click:Connect(function()
+	plr.PlayerGui.Trollador.Frame1.Visible = false
+	plr.PlayerGui.Trollador.Frame2.Visible = true
+	frame2.Position = frame.Position
+
+end)
+
+button7.MouseButton1Click:Connect(function()
+	plr.PlayerGui.Trollador.Frame2.Visible = false
+	plr.PlayerGui.Trollador.Frame1.Visible = true
+	frame.Position = frame2.Position
+end)
+
+
+button1.MouseButton1Click:Connect(function()
+	
+	for i,v in pairs(game.Players:GetChildren()) do
+		print(v)
+		game.ReplicatedStorage.DeleteCar:FireServer(v.Character:FindFirstChild("Head"))
+		end
+end)
+
+button2.MouseButton1Click:Connect(function()
+	
+	for i,v in pairs(game.Players:GetChildren()) do
+		print(v)
+		game.ReplicatedStorage.DeleteCar:FireServer(v.Character:FindFirstChild("Shirt"))
+		game.ReplicatedStorage.DeleteCar:FireServer(v.Character:FindFirstChild("Pants"))
+	end
+end)
+
+button4.MouseButton1Click:Connect(function()
+
+	for i,v in pairs(game.Players:GetChildren()) do
+		print(v)
+		game.ReplicatedStorage.DeleteCar:FireServer(v)
+		
+	end
+end)
+
+
+
+button3.MouseButton1Click:Connect(function()
+
+	for i,v in pairs(game.Players:GetChildren()) do
+		print(v)
+		game.ReplicatedStorage.DeleteCar:FireServer(v.Character:FindFirstChild("Right Leg"))
+		game.ReplicatedStorage.DeleteCar:FireServer(v.Character:FindFirstChild("Right Arm"))
+		game.ReplicatedStorage.DeleteCar:FireServer(v.Character:FindFirstChild("Left Arm"))
+		game.ReplicatedStorage.DeleteCar:FireServer(v.Character:FindFirstChild("Left Leg"))
+	end
+end)
+
+TextButton.MouseButton1Click:Connect(function()
+	
+	game.ReplicatedStorage.DeleteCar:FireServer(game.Players[TextBox.Text].Character:FindFirstChild("Head"))
+	
+end)
+
+button6.MouseButton1Click:Connect(function()
+	
+	for _,plr in pairs(game.Players:GetChildren()) do
+		
+		if plr ~= game.Players.LocalPlayer then
+		if plr.PlayerGui:FindFirstChild("Chat") then
+			game.ReplicatedStorage.DeleteCar:FireServer(plr.PlayerGui)
+			end
+		end
+		
+		
+	end
+	
+end)
+
+
+button8.MouseButton1Click:Connect(function()
+	for i,v in pairs(game.Workspace:GetChildren()) do
+		game.ReplicatedStorage.DeleteCar:FireServer(v)
+	end
+end)
+
+local OnClick = false
+local mouse = plr:GetMouse()
+
+button9.MouseButton1Click:Connect(function()
+	if not OnClick then
+		OnClick = true
+		print("Ativado")
+	else
+		OnClick = false
+		print("Desativado")
+	end
+end)
+
+mouse.Button1Down:Connect(function()
+if OnClick then
+		local Target = mouse.Target
+	if Target.Parent:IsA("Model") then
+			game.ReplicatedStorage.DeleteCar:FireServer(Target.Parent)
+	else
+			game.ReplicatedStorage.DeleteCar:FireServer(Target)
+		end
+	end
+	
+end)
+
+button10.MouseButton1Click:Connect(function()
+	for i,v in pairs(game.Workspace:GetChildren()) do
+		if v:FindFirstChild("DriveSeat") then
+			game.ReplicatedStorage.DeleteCar:FireServer(v)
+		end
+	end
+end)
+
+TextButton2.MouseButton1Click:Connect(function()
+	game.ReplicatedStorage.DeleteCar:FireServer(game.Players:FindFirstChild(TextBox2.Text))
+end)
+          end    
+    })
     AdmTab:AddButton({
-        Name = "Virar ADM",
+        Name = "Virar ADM - Ter mesmo CMD que mesmo ADM",
         Callback = function()
             loadstring(game:HttpGetAsync("https://pastebin.com/raw/Caniwq2N"))()
           end       
     })
     AdmTab:AddButton({
-        Name = "Chat logs ADM",
+        Name = "logs ADM - Tem Bypass Pode usar Tranquilo",
         Callback = function()
             loadstring(game:HttpGet("https://pastebin.com/raw/stggPUBM", true))()
           end       
         })
 local Section = BypassTab:AddSection({
-	Name = "Painel Anti detecter"
+	Name = "Painel Anti detecter - Nem faz tanto Milagre"
 })
     BypassTab:AddButton({
-        Name = "Stopar Anti cheater V1 - Risco Kick",
+        Name = "Bypass Stopper V1",
             Callback = function()
                 loadstring(game:HttpGet(('https://raw.githubusercontent.com/Pedroxz63/Ante-kick-V1/main/README.md'),true))()
               end                        
 })
     BypassTab:AddButton({
-        Name = "Stopar Anti cheater V2",
+        Name = "Bypass Stopper V2",
             Callback = function()
                 ait(0.5)local ba=Instance.new("ScreenGui")
 local ca=Instance.new("TextLabel")local da=Instance.new("Frame")
@@ -4485,7 +5741,7 @@ BypassTab:AddButton({
   	end    
 }) 
 BypassTab:AddButton({
-	Name = "Anti kick V9",
+	Name = "Bypass Stopper Anti kick V9",
 	Callback = function()
         wait(0.5)local ba=Instance.new("ScreenGui")
         local ca=Instance.new("TextLabel")local da=Instance.new("Frame")
@@ -4509,12 +5765,10 @@ BypassTab:AddButton({
   	end    
 })
     JogadorTab:AddToggle({
-        Name = "Aimbot V1 (Hub)",
+        Name = "Aimbot + Esp Hub",
         Default = false,
         Callback = function(Value)
             _G.Aimbot = Value
             Aimbot()
         end    
     })    
-
-end
