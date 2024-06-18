@@ -3,8 +3,8 @@
     local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
     
     --Config Geral
-    local Window = OrionLib:MakeWindow({Name = "😈 Pedroxz Menu V2 😈", HidePremium = false, SaveConfig = true, IntroEnabled = false})
-    local Window = OrionLib:MakeWindow({Name = "😈 Pedroxz Menu V2 😈", HidePremium = false, SaveConfig = true, IntroEnabled = false})
+    local Window = OrionLib:MakeWindow({Name = "😈 Pedroxz Menu V2 😈", HidePremium = true, SaveConfig = true, IntroEnabled = true})
+    local Window = OrionLib:MakeWindow({Name = "😈 Pedroxz Menu V2 😈", HidePremium = true, SaveConfig = true, IntroEnabled = true])
     local Player = game.Players.LocalPlayer
 
     OrionLib:MakeNotification({
